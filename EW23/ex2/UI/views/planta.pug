@@ -1,0 +1,104 @@
+extends layout
+
+block content
+  .w3-card-4
+    header.w3-container.w3-teal
+      h2
+        i.fas.fa-tree
+        |  Planta #{planta._id}
+    
+    .w3-container
+      //- Informações básicas
+      .w3-row.w3-margin-bottom
+        .w3-col.s3.detail-label
+          i.fas.fa-map-marker-alt
+          |  Freguesia:
+        .w3-col.s9.detail-value= planta.freguesia || 'N/A'
+      
+      .w3-row.w3-margin-bottom
+        .w3-col.s3.detail-label
+          i.fas.fa-road
+          |  Rua:
+        .w3-col.s9.detail-value= planta.rua || 'N/A'
+      
+      .w3-row.w3-margin-bottom
+        .w3-col.s3.detail-label
+          i.fas.fa-map-pin
+          |  Local:
+        .w3-col.s9.detail-value= planta.local || 'N/A'
+      
+      .w3-row.w3-margin-bottom
+        .w3-col.s3.detail-label
+          i.fas.fa-seedling
+          |  Espécie:
+        .w3-col.s9.detail-value
+          a.w3-hover-green(href=`/especies/${planta.especie.nome_comum}`)
+            = planta.especie.nome_comum
+            |  (#{planta.especie.nome_cientifico})
+      
+      .w3-row.w3-margin-bottom
+        .w3-col.s3.detail-label
+          i.fas.fa-info-circle
+          |  Estado:
+        .w3-col.s9.detail-value= planta.estado || 'N/A'
+      
+      .w3-row.w3-margin-bottom
+        .w3-col.s3.detail-label
+          i.fas.fa-hashtag
+          |  Número de Registo:
+        .w3-col.s9.detail-value= planta.numero_registo || 'N/A'
+      
+      .w3-row.w3-margin-bottom
+        .w3-col.s3.detail-label
+          i.fas.fa-tools
+          |  Número de Intervenções:
+        .w3-col.s9.detail-value= planta.numero_intervencoes || 0
+      
+      //- Características específicas
+      .w3-panel.w3-light-grey
+        h3
+          i.fas.fa-clipboard-list
+          |  Características
+        .w3-row.w3-margin-bottom
+          .w3-col.s3.detail-label
+            i.fas.fa-thermometer-half
+            |  Caldeira:
+          .w3-col.s9.detail-value= planta.caracteristicas.caldeira ? 'Sim' : 'Não'
+        
+        .w3-row.w3-margin-bottom
+          .w3-col.s3.detail-label
+            i.fas.fa-crutch
+            |  Tutor:
+          .w3-col.s9.detail-value= planta.caracteristicas.tutor ? 'Sim' : 'Não'
+        
+        .w3-row.w3-margin-bottom
+          .w3-col.s3.detail-label
+            i.fas.fa-layer-group
+            |  Implantação:
+          .w3-col.s9.detail-value= planta.caracteristicas.implantacao || 'N/A'
+      
+      //- Informações adicionais
+      .w3-row.w3-margin-bottom
+        .w3-col.s3.detail-label
+          i.fas.fa-user-tie
+          |  Gestor:
+        .w3-col.s9.detail-value= planta.gestor || 'N/A'
+      
+      if planta.data_atualizacao
+        .w3-row.w3-margin-bottom
+          .w3-col.s3.detail-label
+            i.fas.fa-calendar-alt
+            |  Última Atualização:
+          .w3-col.s9.detail-value= planta.data_atualizacao
+      
+      if planta.observacoes
+        .w3-row.w3-margin-bottom
+          .w3-col.s3.detail-label
+            i.fas.fa-comment
+            |  Observações:
+          .w3-col.s9.detail-value= planta.observacoes
+    
+    footer.w3-container.w3-teal
+      a.w3-button.w3-white(href="/")
+        i.fas.fa-arrow-left
+        |  Voltar à página principal

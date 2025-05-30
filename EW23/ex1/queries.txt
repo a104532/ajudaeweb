@@ -1,0 +1,32 @@
+1. db.plantas.countDocuments() - 29617
+
+
+2.db.plantas.countDocuments({ "freguesia": "São Domingos de Rana" }) - 5903
+
+3. 
+db.plantas.aggregate([
+  { $group: { _id: "$freguesia" } },
+  { $sort: { _id: 1 } },
+  { $project: { _id: 0, freguesia: "$_id" } }
+])
+
+[
+  { freguesia: null },
+  { freguesia: 'Abóboda' },
+  { freguesia: 'Alcabideche' },
+  { freguesia: 'São Domingos de Rana' },
+  { freguesia: 'U.F. Carcavelos e Parede' },
+  { freguesia: 'U.F. Cascais e Estoril' }
+]
+
+4.
+db.plantas.aggregate([
+  { $group: { 
+      _id: "$freguesia", 
+      count: { $sum: 1 } 
+    } 
+  },
+  { $sort: { _id: 1 } }
+])
+
+5.

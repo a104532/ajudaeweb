@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title= title || 'Gestão de Plantas Urbanas'
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+    style.
+      .w3-hover-green:hover { background-color: #4CAF50 !important; color: white !important; }
+      .w3-hover-blue:hover { background-color: #2196F3 !important; color: white !important; }
+      .species-card { margin-bottom: 20px; }
+      .detail-label { font-weight: bold; color: #555; }
+      .detail-value { padding-left: 10px; }
+  body
+    header.w3-container.w3-teal
+      .w3-row
+        .w3-col.s10
+          h1 
+            i.fas.fa-leaf
+            |  #{title || 'Gestão de Plantas Urbanas'}
+          if subtitle
+            h3= subtitle
+        .w3-col.s2.w3-padding
+          a.w3-button.w3-white.w3-right(href="/") 
+            i.fas.fa-home
+            |  Início
+    main.w3-container.w3-margin-top
+      block content
+    footer.w3-container.w3-teal.w3-margin-top
+      p 
+        a.w3-button.w3-white(href="/") 
+          i.fas.fa-home
+          |  Página Inicial
+      p &copy; 2023 Gestão de Plantas Urbanas

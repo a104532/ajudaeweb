@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .w3-container
+    h1 Lista de Plantas
+    
+    table.w3-table-all.w3-hoverable
+      thead
+        tr.w3-light-grey
+          th ID
+          th Freguesia
+          th Espécie
+          th Estado
+          th Intervenções
+      tbody
+        each planta in plantas
+          tr
+            td
+              a(href=`/${planta._id}`)= planta._id
+            td= planta.freguesia
+            td
+              a(href=`/especies/${planta.especie.nome_comum}`)= planta.especie.nome_comum
+            td= planta.estado
+            td= planta.numero_intervencoes
